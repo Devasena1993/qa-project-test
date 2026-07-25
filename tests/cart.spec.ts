@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '@Playwright/test';
 
 test('logs in and adds the first product to the cart', async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
@@ -13,5 +13,6 @@ test('logs in and adds the first product to the cart', async ({ page }) => {
   await expect(firstAddToCart).toBeVisible();
   await firstAddToCart.click();
 
-  await page.getByRole('link', { name: 'Sauce Labs Backpack' }).click();
+  // There are two accessible links for this product (image + title), so choose the title link.
+  await page.getByRole('link', { name: 'Sauce Labs Backpack' }).nth(1).click();
 });
